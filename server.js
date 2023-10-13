@@ -1,11 +1,9 @@
 
-Express.static()
-
 var express = require("express");
 
 var app = express();
 
-app.use(express.static("../../Programming3"));
+app.use(express.static("."));
 
 app.get("/", function(req, res){
 
