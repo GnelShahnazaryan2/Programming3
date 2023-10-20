@@ -1,4 +1,9 @@
-class Kaycak  extends LivingCreature{
+let random = require("./random");
+
+LivingCreature = require("./LivingCreature");
+
+
+module.exports = class Kaycak  extends LivingCreature{
     constructor(x, y, index) {
       super(x,y,index)
       this.energy = 8;
@@ -39,19 +44,12 @@ class Kaycak  extends LivingCreature{
     kill() {
 
         setTimeout(() => {
-            console.log(this)
             this.die(this.x, this.y)
             matrix[this.y][this.x] = 0
-            console.log(this.directions)
             for (let i = 0; i < this.directions.length; i++) { //[[],[],[],[],[],[],[],]
-
-                // console.log("Asd")
                 let x = this.directions[i][0]
                 let y = this.directions[i][1]
-
                 matrix[y][x] = 0
-
-
                 this.die(x, y);
 
             }
