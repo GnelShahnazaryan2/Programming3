@@ -58,7 +58,7 @@ module.exports = class Snake  extends LivingCreature{
 
         for (let i = 0; i < this.directions.length; i++) {
 
-            // console.log("aaaa");
+          
             let x = this.directions[i][0];
             let y = this.directions[i][1];
 

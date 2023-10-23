@@ -17,14 +17,14 @@ server.listen(3000, function () {
 
 
 
- matrix = [];
- grassArr = [];
- grassEaterArr = [];
- predatorArr = [];
- Kaycakarr = [];
- snakeArr = [];
- side = 20;
- matrixSize = 30
+matrix = [];
+grassArr = [];
+grassEaterArr = [];
+predatorArr = [];
+Kaycakarr = [];
+snakeArr = [];
+side = 20;
+matrixSize = 30
 
 
 LivingCreature = require("./LivingCreature");
@@ -37,9 +37,9 @@ Predator = require("./Predator");
 
 var cl = false;
 
-io.on('connection',function(socket){
-    if(cl){
-        setInterval(drawServer,200);
+io.on('connection', function (socket) {
+    if (cl) {
+        setInterval(drawServer, 200);
         cl = true
     }
 });
@@ -102,15 +102,15 @@ for (let y = 0; y < matrix.length; y++) {
 
 }
 
-// setInterval(foo, 2000)
-// function foo() {
-//     let x = Math.floor(Math.random() * matrixSize)
-//     let y = Math.floor(Math.random() * matrixSize)
-//     matrix[y][x] = 4
-//     let oneKaycak = new Kaycak(x, y, 4)
-//     oneKaycak.kill()
-//     clearInterval(foo)
-// };
+setInterval(foo, 2000)
+function foo() {
+    let x = Math.floor(Math.random() * matrixSize)
+    let y = Math.floor(Math.random() * matrixSize)
+    matrix[y][x] = 4
+    let oneKaycak = new Kaycak(x, y, 4)
+    oneKaycak.kill()
+    clearInterval(foo)
+};
 
 
 function drawServer() {
@@ -139,4 +139,23 @@ function drawServer() {
 
 }
 
+
+io.on("connection", (socket) => {
+    socket.emit("matrix", matrix)
+    StartGame()
+})
+
+
 setInterval(drawServer, 1000);
+
+
+let intervalID;
+
+time = 200
+
+function StartGame() {
+    clearInterval(intervalID)
+    intervalID = setInterval(() => {
+        drawServer()
+    }, time)
+}
