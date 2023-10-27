@@ -1,6 +1,6 @@
 
 var express = require("express");
-
+var fs = require("fs");
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -21,28 +21,19 @@ matrix = [];
 grassArr = [];
 grassEaterArr = [];
 predatorArr = [];
-Kaycakarr = [];
+// Kaycakarr = [];
 snakeArr = [];
 side = 20;
-matrixSize = 30
+matrixSize = 30;
 
 
 LivingCreature = require("./LivingCreature");
-Kaycak = require("./Kaycak");
+// Kaycak = require("./Kaycak");
 Grass = require("./grass");
 GrassEater = require("./grassEater");
 Snake = require("./snake");
 Predator = require("./Predator");
 
-
-var cl = false;
-
-io.on('connection', function (socket) {
-    if (cl) {
-        setInterval(drawServer, 200);
-        cl = true
-    }
-});
 
 
 function generateMatrix(matrixSize) {
@@ -89,11 +80,11 @@ for (let y = 0; y < matrix.length; y++) {
             let predator = new Predator(x, y, 3)
             predatorArr.push(predator)
 
-        } else if (matrix[y][x] == 4) {
-            let kaycak = new Kaycak(x, y, 4)
-            Kaycakarr.push(kaycak)
+         } //else if (matrix[y][x] == 4) {
+        //     let kaycak = new Kaycak(x, y, 4)
+        //     Kaycakarr.push(kaycak)
 
-        }
+        // }
         else if (matrix[y][x] == 5) {
             let s = new Snake(x, y, 5)
             snakeArr.push(s)
@@ -102,15 +93,15 @@ for (let y = 0; y < matrix.length; y++) {
 
 }
 
-setInterval(foo, 2000)
-function foo() {
-    let x = Math.floor(Math.random() * matrixSize)
-    let y = Math.floor(Math.random() * matrixSize)
-    matrix[y][x] = 4
-    let oneKaycak = new Kaycak(x, y, 4)
-    oneKaycak.kill()
-    clearInterval(foo)
-};
+// setInterval(foo, 2000)
+// function foo() {
+//     let x = Math.floor(Math.random() * matrixSize)
+//     let y = Math.floor(Math.random() * matrixSize)
+//     matrix[y][x] = 4
+//     let oneKaycak = new Kaycak(x, y, 4)
+//     oneKaycak.kill()
+//     clearInterval(foo)
+// };
 
 
 function drawServer() {
@@ -130,6 +121,15 @@ function drawServer() {
         snakeArr[i].move()
     }
 
+    let statObj = {
+        grass : grassArr.length,
+        grassEater : grassEaterArr.length,
+        Predator : predatorArr.length,
+        Snake : snakeArr.length,
+    }
+    
+    fs.writeFileSync("Statistic.json", JSON.stringify(statObj));
+    io.emit("statObj", statObj);
 
     let sendData = {
         matrix: matrix
@@ -147,6 +147,8 @@ io.on("connection", (socket) => {
 
 
 setInterval(drawServer, 1000);
+
+
 
 
 let intervalID;

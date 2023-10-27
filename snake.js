@@ -29,14 +29,14 @@ module.exports = class Snake  extends LivingCreature{
 
             }
         }
-        for (var i in Kaycakarr) {
-            if (x == Kaycakarr[i].x && y == Kaycakarr[i].y) {
-                Kaycakarr.splice(i, 1);
-                break;
+        // for (var i in Kaycakarr) {
+        //     if (x == Kaycakarr[i].x && y == Kaycakarr[i].y) {
+        //         Kaycakarr.splice(i, 1);
+        //         break;
 
 
-            };
-        };
+        //     };
+        
     };
 
 

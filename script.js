@@ -2,14 +2,27 @@ socket = io()
 var side = 20;
 matrixSize = 30
 
-gray = "gray"
-yellow = "yellow"
-red = "red"
-purple = "purple"
-black = "black"
-green = "green"
+let Statobj = {};
+
+var colorObj = {
+     gray : "gray",
+     yellow : "yellow",
+     red : "red",
+     purple : "purple",
+     black : "black",
+     green : "green"
+    
+}
 
 
+
+const winter = document.getElementById("winter");
+
+winter.addEventListener("click", function(){
+
+    
+
+});
 
 function setup() {
     createCanvas(matrixSize * side, matrixSize * side);
@@ -54,6 +67,15 @@ function drawmtrix(data) {
 
 }
 
+socket.on("statObj", function(stat){
+
+    Statobj = stat
+    stats.innerHTML = `Grass: ${Statobj.grass};
+    `
+
+});
+
+let stats = document.getElementById("stats")
    
 socket.on("matrix",drawmtrix);
 
