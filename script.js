@@ -2,6 +2,15 @@ socket = io()
 var side = 20;
 matrixSize = 30
 
+gray = "gray"
+yellow = "yellow"
+red = "red"
+purple = "purple"
+black = "black"
+green = "green"
+
+
+
 function setup() {
     createCanvas(matrixSize * side, matrixSize * side);
     frameRate(50)
@@ -15,25 +24,25 @@ function drawmtrix(data) {
     for (let y = 0; y < matrix.length; y++) {
         for (let x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 0) {
-                fill("gray")
+                fill(gray)
 
             }
             else if (matrix[y][x] == 1) {
-                fill("green")
+                fill(green)
 
             }
             else if (matrix[y][x] == 2) {
-                fill("yellow")
+                fill(yellow)
             }
             else if (matrix[y][x] == 3) {
-                fill("red")
+                fill(red)
 
             } else if (matrix[y][x] == 4) {
-                fill("purple")
+                fill(purple)
 
             }
             else if (matrix[y][x] == 5) {
-                fill("black")
+                fill(black)
 
             };
             rect(x * side, y * side, side, side)
