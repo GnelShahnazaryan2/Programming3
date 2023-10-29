@@ -7,7 +7,7 @@ module.exports = class Grass extends LivingCreature {
 
     constructor(x, y, index) {
         super(x,y,index)
-        this.multiply = 0;
+        this.multiply = 5;
 
     }
 

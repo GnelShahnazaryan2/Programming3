@@ -29,13 +29,14 @@ module.exports = class Snake  extends LivingCreature{
 
             }
         }
-        // for (var i in Kaycakarr) {
-        //     if (x == Kaycakarr[i].x && y == Kaycakarr[i].y) {
-        //         Kaycakarr.splice(i, 1);
-        //         break;
+      for (var i in Kaycakarr) {
+           if (x == Kaycakarr[i].x && y == Kaycakarr[i].y) {
+               Kaycakarr.splice(i, 1);
+               break;
 
 
-        //     };
+           };
+        }
         
     };
 
@@ -58,17 +59,17 @@ module.exports = class Snake  extends LivingCreature{
 
         for (let i = 0; i < this.directions.length; i++) {
 
-          
             let x = this.directions[i][0];
             let y = this.directions[i][1];
+            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
+                console.log(x, y)
+                matrix[y][x] = 0;
 
-            matrix[y][x] = 0;
 
+                this.die(x, y);
 
-            this.die(x, y);
+            };
 
         };
-
     };
-
 };

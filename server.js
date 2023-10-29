@@ -1,4 +1,3 @@
-
 var express = require("express");
 var fs = require("fs");
 var app = express();
@@ -21,14 +20,14 @@ matrix = [];
 grassArr = [];
 grassEaterArr = [];
 predatorArr = [];
-// Kaycakarr = [];
+Kaycakarr = [];
 snakeArr = [];
 side = 20;
 matrixSize = 30;
 
 
 LivingCreature = require("./LivingCreature");
-// Kaycak = require("./Kaycak");
+Kaycak = require("./kaycak");
 Grass = require("./grass");
 GrassEater = require("./grassEater");
 Snake = require("./snake");
@@ -45,7 +44,7 @@ function generateMatrix(matrixSize) {
         }
     }
 
-    fillCharacter(1, 25);
+    fillCharacter(1, 35);
     fillCharacter(2, 12);
     fillCharacter(3, 8);
     fillCharacter(5, 4);
@@ -74,17 +73,17 @@ for (let y = 0; y < matrix.length; y++) {
         else if (matrix[y][x] == 2) {
             let grEater = new GrassEater(x, y, 2)
             grassEaterArr.push(grEater)
-
         }
         else if (matrix[y][x] == 3) {
             let predator = new Predator(x, y, 3)
             predatorArr.push(predator)
 
-         } //else if (matrix[y][x] == 4) {
-        //     let kaycak = new Kaycak(x, y, 4)
-        //     Kaycakarr.push(kaycak)
+        } else if (matrix[y][x] == 4) {
+            let kaycak = new Kaycak(x, y, 4)
+            Kaycakarr.push(kaycak)
 
-        // }
+
+        }
         else if (matrix[y][x] == 5) {
             let s = new Snake(x, y, 5)
             snakeArr.push(s)
@@ -93,15 +92,16 @@ for (let y = 0; y < matrix.length; y++) {
 
 }
 
-// setInterval(foo, 2000)
-// function foo() {
-//     let x = Math.floor(Math.random() * matrixSize)
-//     let y = Math.floor(Math.random() * matrixSize)
-//     matrix[y][x] = 4
-//     let oneKaycak = new Kaycak(x, y, 4)
-//     oneKaycak.kill()
-//     clearInterval(foo)
-// };
+setInterval(foo, 1000)
+
+function foo() {
+    let x = Math.floor(Math.random() * matrixSize);
+    let y = Math.floor(Math.random() * matrixSize);
+    matrix[y][x] = 4;
+    let oneKaycak = new Kaycak(x, y, 4);
+    oneKaycak.kill();
+};
+
 
 
 function drawServer() {
@@ -121,13 +121,17 @@ function drawServer() {
         snakeArr[i].move()
     }
 
+
+
     let statObj = {
-        grass : grassArr.length,
-        grassEater : grassEaterArr.length,
-        Predator : predatorArr.length,
-        Snake : snakeArr.length,
+        grass: grassArr.length,
+        grassEater: grassEaterArr.length,
+        Predator: predatorArr.length,
+        Snake: snakeArr.length,
+        Kaycak: Kaycakarr.length
+
     }
-    
+
     fs.writeFileSync("Statistic.json", JSON.stringify(statObj));
     io.emit("statObj", statObj);
 
@@ -145,15 +149,14 @@ io.on("connection", (socket) => {
     StartGame()
 })
 
-
-setInterval(drawServer, 1000);
-
-
+setInterval(drawServer, 500);
 
 
 let intervalID;
 
-time = 200
+time = 400;
+
+
 
 function StartGame() {
     clearInterval(intervalID)

@@ -1,0 +1,35 @@
+#winter{
+    background-color: aqua;
+    border: none;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+}
+
+#summer{
+    background-color: rgb(251, 255, 0);
+    border: none;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+}
+
+#spring{
+    background-color: rgb(30, 255, 0);
+    border: none;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+}
+
+#autumn{
+    background-color: rgba(255, 136, 0, 0.836);
+    border: none;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+}
+
+#stats{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
