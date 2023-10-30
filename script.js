@@ -4,6 +4,7 @@ matrixSize = 30
 let Statobj = {};
 
 var colorObj = {
+
     gray: "gray",
     yellow: "yellow",
     red: "red",
@@ -13,17 +14,21 @@ var colorObj = {
 
 }
 
-
 var funObj = {
     winter: function () {
         if (winter.innerText == "Winter") {
+            colorObj.yellow = "yellow",
+            colorObj.red = "red", 
+            colorObj.purple = "#6600FF ",
+            colorObj.ligthGreen = "#D06317",
+            colorObj.green = "#00ffff8e"
+
 
         }
     },
 
     summer: function () {
         if (summer.innerText == "Summer") {
-            colorObj.gray = "gray",
             colorObj.yellow = "yellow",
             colorObj.red = "red",
             colorObj.purple = "purple",
@@ -34,13 +39,17 @@ var funObj = {
 
     spring: function () {
         if (spring.innerText == "Spring") {
-
+            
         }
     },
 
     autumn: function () {
         if (autumn.innerText == "Autumn") {
-            colorObj.green = "#B04B00" 
+            colorObj.yellow = "#ECC800",
+            colorObj.red = "#D23609", 
+            colorObj.purple = "#6600FF ",
+            colorObj.ligthGreen = "#BDE300  ",
+            colorObj.green = "#A46B12" 
 
 
         }
@@ -53,7 +62,7 @@ const winter = document.getElementById("winter");
 const summer = document.getElementById("summer");
 const spring = document.getElementById("spring");
 const autumn = document.getElementById("autumn");
-
+const stop = document.getElementById("stop")
 
 winter.addEventListener("click", funObj.winter);
 
@@ -63,7 +72,9 @@ spring.addEventListener("click", funObj.spring);
 
 autumn.addEventListener("click", funObj.autumn);
 
-
+stop.addEventListener("click",function(){
+    alert("Stop");
+})
 
 function setup() {
     createCanvas(matrixSize * side, matrixSize * side);

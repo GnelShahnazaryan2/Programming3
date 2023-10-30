@@ -33,3 +33,12 @@
 #stats{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+#stop{
+    background-color: #000;
+    border: none;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    color: azure;
+}

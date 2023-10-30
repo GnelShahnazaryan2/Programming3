@@ -30,7 +30,7 @@ LivingCreature = require("./LivingCreature");
 Kaycak = require("./kaycak");
 Grass = require("./grass");
 GrassEater = require("./grassEater");
-Snake = require("./snake");
+Snake = require("./Snake");
 Predator = require("./Predator");
 
 
@@ -154,7 +154,7 @@ setInterval(drawServer, 500);
 
 let intervalID;
 
-time = 400;
+time = 500;
 
 
 
