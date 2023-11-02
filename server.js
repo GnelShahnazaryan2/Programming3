@@ -30,7 +30,7 @@ LivingCreature = require("./LivingCreature");
 Kaycak = require("./kaycak");
 Grass = require("./grass");
 GrassEater = require("./grassEater");
-Snake = require("./Snake");
+Snake = require("./snake");
 Predator = require("./Predator");
 
 
@@ -80,7 +80,6 @@ for (let y = 0; y < matrix.length; y++) {
 
         } else if (matrix[y][x] == 4) {
             let kaycak = new Kaycak(x, y, 4)
-            Kaycakarr.push(kaycak)
 
 
         }
@@ -92,14 +91,17 @@ for (let y = 0; y < matrix.length; y++) {
 
 }
 
-setInterval(foo, 1000)
+
+
+setInterval(foo, 2000)
 
 function foo() {
     let x = Math.floor(Math.random() * matrixSize);
     let y = Math.floor(Math.random() * matrixSize);
     matrix[y][x] = 4;
-    let oneKaycak = new Kaycak(x, y, 4);
-    oneKaycak.kill();
+    var oneKaycak = new Kaycak(x, y, 4);
+    Kaycakarr.push(oneKaycak);
+    oneKaycak.kill()
 };
 
 
@@ -120,7 +122,6 @@ function drawServer() {
     for (let i = 0; i < snakeArr.length; i++) {
         snakeArr[i].move()
     }
-
 
 
     let statObj = {
@@ -157,10 +158,10 @@ let intervalID;
 time = 500;
 
 
-
 function StartGame() {
     clearInterval(intervalID)
     intervalID = setInterval(() => {
         drawServer()
     }, time)
 }
+

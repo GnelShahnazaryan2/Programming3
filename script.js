@@ -1,6 +1,6 @@
-socket = io()
+let socket = io()
 var side = 20;
-matrixSize = 30
+let matrixSize = 30
 let Statobj = {};
 
 var colorObj = {
@@ -10,18 +10,18 @@ var colorObj = {
     red: "red",
     purple: "purple",
     ligthGreen: "#93FF00 ",
-    green: "green"
+    green: "#006300"
 
-}
+};
 
 var funObj = {
     winter: function () {
         if (winter.innerText == "Winter") {
-            colorObj.yellow = "yellow",
-            colorObj.red = "red", 
-            colorObj.purple = "#6600FF ",
-            colorObj.ligthGreen = "#D06317",
-            colorObj.green = "#00ffff8e"
+            colorObj.yellow = "#989B02",
+                colorObj.red = "#8A0200",
+                colorObj.purple = "#6600FF ",
+                colorObj.ligthGreen = "#D06317",
+                colorObj.green = "#00ffff8e"
 
 
         }
@@ -30,33 +30,37 @@ var funObj = {
     summer: function () {
         if (summer.innerText == "Summer") {
             colorObj.yellow = "yellow",
-            colorObj.red = "red",
-            colorObj.purple = "purple",
-            colorObj.ligthGreen = "#93FF00 ",
-            colorObj.green = "green"
+                colorObj.red = "red",
+                colorObj.purple = "purple",
+                colorObj.ligthGreen = "#93FF00 ",
+                colorObj.green = "#006300 "
         }
     },
 
     spring: function () {
         if (spring.innerText == "Spring") {
-            
+            colorObj.yellow = "#FCFF43",
+                colorObj.red = "#D13D3D",
+                colorObj.purple = "gray",
+                colorObj.ligthGreen = "#006300 ",
+                colorObj.green = "#00E600"
+
         }
     },
 
     autumn: function () {
         if (autumn.innerText == "Autumn") {
             colorObj.yellow = "#ECC800",
-            colorObj.red = "#D23609", 
-            colorObj.purple = "#6600FF ",
-            colorObj.ligthGreen = "#BDE300  ",
-            colorObj.green = "#A46B12" 
+                colorObj.red = "#D23609",
+                colorObj.purple = "#6600FF ",
+                colorObj.ligthGreen = "#BDE300  ",
+                colorObj.green = "#A46B12"
 
 
         }
     }
 
 };
-
 
 const winter = document.getElementById("winter");
 const summer = document.getElementById("summer");
@@ -65,16 +69,16 @@ const autumn = document.getElementById("autumn");
 const stop = document.getElementById("stop")
 
 winter.addEventListener("click", funObj.winter);
-
 summer.addEventListener("click", funObj.summer);
-
 spring.addEventListener("click", funObj.spring);
-
 autumn.addEventListener("click", funObj.autumn);
 
-stop.addEventListener("click",function(){
+stop.addEventListener("click", function () {
     alert("Stop");
 })
+
+
+
 
 function setup() {
     createCanvas(matrixSize * side, matrixSize * side);
@@ -101,6 +105,7 @@ function drawmtrix(data) {
             }
             else if (matrix[y][x] == 3) {
                 fill(colorObj.red)
+
 
             } else if (matrix[y][x] == 4) {
                 fill(colorObj.purple)
